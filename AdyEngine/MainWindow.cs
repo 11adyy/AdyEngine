@@ -1,0 +1,8 @@
+﻿namespace AdyEngine;
+
+public class Main
+{
+    public static void Main() {
+        
+    }
+}
