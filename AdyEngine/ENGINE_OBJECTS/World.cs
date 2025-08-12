@@ -1,4 +1,4 @@
-﻿namespace AdyEngine.OBJECTS;
+﻿namespace AdyEngine.ENGINE_OBJECTS;
 
 public class World {
     public World(Camera camera) {

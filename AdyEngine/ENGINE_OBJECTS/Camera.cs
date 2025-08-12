@@ -1,7 +1,7 @@
 ﻿using AdyEngine.CONSTANTS;
 using AdyEngine.SCRIPTS;
 
-namespace AdyEngine.OBJECTS;
+namespace AdyEngine.ENGINE_OBJECTS;
 
 public class Camera {
     public Camera() {

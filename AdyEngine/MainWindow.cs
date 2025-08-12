@@ -1,5 +1,5 @@
-﻿using AdyEngine.OBJECTS;
-using Object = AdyEngine.OBJECTS.Object;
+﻿using AdyEngine.ENGINE_OBJECTS;
+using Object = AdyEngine.ENGINE_OBJECTS.Object;
 
 namespace AdyEngine;
 

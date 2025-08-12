@@ -1,4 +1,4 @@
-﻿namespace AdyEngine.OBJECTS;
+﻿namespace AdyEngine.ENGINE_OBJECTS;
 
 public class Object {
     public Object((int wight, int height, int depth) size, (int x, int y, int z) coordinates) {
