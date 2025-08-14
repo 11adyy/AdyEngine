@@ -1,7 +1,6 @@
-﻿using AdyEngine._3D_OBJECTS.MATERIALS;
-using AdyEngine.OBJECTS;
+﻿using AdyEngine.OBJECTS;
 
-namespace AdyEngine._3D_OBJECTS.GEOMETRY.GEOMETRY_OBJECTS;
+namespace AdyEngine._3D_OBJECTS.GEOMETRY_OBJECTS;
 
 public class Sphere : IObject {
     /// <summary>
@@ -9,19 +8,16 @@ public class Sphere : IObject {
     /// </summary>
     /// <param name="position"> Sphere coordinates </param>
     /// <param name="radius"> Sphere radius </param>
-    /// <param name="material"> Material </param>
     /// <param name="name"> Sphere name </param>
-    public Sphere(Vector3 position, double radius, Material material = null!, string name = "sphere1") {
+    public Sphere(Vector3 position, double radius, string name) {
         Position     = position;
         Radius       = radius;
         Name         = name;
-        Material     = material == null! ? Material.DefaultMaterial : material;
     }
     
     private string Name { get; set; }
     private double Radius { get; set; }
     private Vector3 Position { get; set; }
-    private Material Material { get; set; }
 
     public string GetName() => Name;
     
@@ -46,6 +42,4 @@ public class Sphere : IObject {
     public Vector3 GetPosition() => Position;
     
     public void SetPosition(Vector3 position) => Position = position;
-    
-    public Material GetMaterial() => Material;
 }

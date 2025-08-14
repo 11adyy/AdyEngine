@@ -1,7 +1,6 @@
-﻿using AdyEngine._3D_OBJECTS.MATERIALS;
-using AdyEngine.OBJECTS;
+﻿using AdyEngine.OBJECTS;
 
-namespace AdyEngine._3D_OBJECTS.GEOMETRY.GEOMETRY_OBJECTS;
+namespace AdyEngine._3D_OBJECTS.GEOMETRY_OBJECTS;
 
 public class Plane : IObject {
     /// <summary>
@@ -9,19 +8,16 @@ public class Plane : IObject {
     /// </summary>
     /// <param name="size"> Plane size </param>
     /// <param name="high"> Plane high </param>
-    /// <param name="material"> Material </param>
     /// <param name="name"> Plane name </param>
-    public Plane(Vector3 size, double high, Material material = null!, string name = "cube1") {
+    public Plane(Vector3 size, double high, string name) {
         Size = size;
         High = high;
         Name = name;
-        Material = material == null! ? Material.DefaultMaterial : material;
     }
     
     private string Name { get; set; }
     private Vector3 Size { get; set; }
     private double High { get; set; }
-    private Material Material { get; set; }
 
     public string GetName() => Name;
     
@@ -33,6 +29,4 @@ public class Plane : IObject {
     public Vector3 GetPosition() => Size;
     
     public void SetPosition(Vector3 position) => Size = position;
-    
-    public Material GetMaterial() => Material;
 }

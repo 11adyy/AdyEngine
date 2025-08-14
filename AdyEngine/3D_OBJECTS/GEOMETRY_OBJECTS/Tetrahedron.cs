@@ -1,30 +1,26 @@
-﻿using AdyEngine._3D_OBJECTS.MATERIALS;
-using AdyEngine.OBJECTS;
+﻿using AdyEngine.OBJECTS;
 
-namespace AdyEngine._3D_OBJECTS.GEOMETRY.GEOMETRY_OBJECTS;
+namespace AdyEngine._3D_OBJECTS.GEOMETRY_OBJECTS;
 
 public class Tetrahedron : IObject {
-    public Tetrahedron(Vector3 position, Material material = null!, string name = "tetrahedron1") {
+    public Tetrahedron(Vector3 position, string name) {
         Position = position;
         Name     = name;
-        Material = material == null! ? Material.DefaultMaterial : material;
         
         Vertices = new Vector3[5];
         for (var i = 0; i < Vertices.Length; i++) 
             Vertices[i] = position;
     }
 
-    public Tetrahedron(Vector3 position, Vector3[] vertices, Material material = null!, string name = "tetrahedron1") {
+    public Tetrahedron(Vector3 position, Vector3[] vertices, string name) {
         Position = position;
         Vertices = vertices;
         Name     = name;
-        Material = material == null! ? Material.DefaultMaterial : material;
     }
     
     private string Name { get; set; }
     private Vector3 Position { get; set; }
     private Vector3[] Vertices { get; set; }
-    private Material Material { get; set; }
     
     public string GetName() => Name;
     
@@ -75,6 +71,4 @@ public class Tetrahedron : IObject {
     public Vector3 GetPosition() => Position;
 
     public void SetPosition(Vector3 position) => Position = position;
-    
-    public Material GetMaterial() => Material;
 }
