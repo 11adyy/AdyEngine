@@ -1,4 +1,5 @@
-﻿using AdyEngine._3D_OBJECTS;
+﻿using System.Drawing;
+using AdyEngine._3D_OBJECTS;
 using AdyEngine.OBJECTS;
 using AdyEngine.SCRIPTS;
 
@@ -51,6 +52,7 @@ public class Camera {
 
     public char[] GetView(List<IObject> objects, List<Vector3> lights) {
         _buffer = new char[Size.wight * Size.height];
+        
         for (var i = 0; i < Size.wight; i++) {
             for (var j = 0; j < Size.height; j++) {
                 var uv = new Vector2(i, j) / new Vector2(Size.wight, Size.height) * new Vector2(2d) - new Vector2(1d);
@@ -64,12 +66,11 @@ public class Camera {
                         
                         if (intersection.X > 0 && intersection.X < minIt) {
                             if (lights.Count > 0)
-                                foreach (var light in lights) {
+                                foreach (var light in lights) 
                                     _buffer[i + j * Size.wight] = Gradient[(int)MathScripts.Clamp(
                                         Gradient.IndexOf(_buffer[i + j * Size.wight]) +
                                         (int)(normal.Dot(light.Normalize()) * 20),
                                         0, Gradient.Length - 2)];
-                                }
                             else
                                 _buffer[i + j * Size.wight] = '@';
 
