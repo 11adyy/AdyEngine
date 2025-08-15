@@ -3,23 +3,36 @@ using AdyEngine.OBJECTS;
 
 namespace AdyEngine._3D_OBJECTS.GEOMETRY.GEOMETRY_OBJECTS;
 
-public class Plane : Object {
+public class Plane : IObject {
     /// <summary>
     /// Plane object
     /// </summary>
-    /// <param name="position"> Plane size </param>
+    /// <param name="size"> Plane size </param>
     /// <param name="high"> Plane high </param>
     /// <param name="material"> Material </param>
     /// <param name="name"> Plane name </param>
-    public Plane(Vector3 position, Vector3 high, Material material = null!, string name = "plane1") : base(position, high, material, name) {
-        Position = position;
-        Size     = high;
-        Name     = name;
+    public Plane(Vector3 size, double high, Material material = null!, string name = "cube1") {
+        Size = size;
+        High = high;
+        Name = name;
         Material = material == null! ? Material.DefaultMaterial : material;
     }
     
-    public override Vector2 Intersection(Vector3 rayOrigin, Vector3 rayDirection, out Vector3 intersectionNormal) {
+    private string Name { get; set; }
+    private Vector3 Size { get; set; }
+    private double High { get; set; }
+    private Material Material { get; set; }
+
+    public string GetName() => Name;
+    
+    public Vector2 Intersection(Vector3 rayOrigin, Vector3 rayDirection, out Vector3 intersectionNormal) {
         intersectionNormal = new Vector3(0, 0, -1);
-        return new Vector2(-(rayOrigin.Dot(Position) + Size.X) / rayDirection.Dot(Position));
+        return new Vector2(-(rayOrigin.Dot(Size) + High) / rayDirection.Dot(Size));
     }
+    
+    public Vector3 GetPosition() => Size;
+    
+    public void SetPosition(Vector3 position) => Size = position;
+    
+    public Material GetMaterial() => Material;
 }

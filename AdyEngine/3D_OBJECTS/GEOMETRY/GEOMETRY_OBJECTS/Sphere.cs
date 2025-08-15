@@ -3,7 +3,7 @@ using AdyEngine.OBJECTS;
 
 namespace AdyEngine._3D_OBJECTS.GEOMETRY.GEOMETRY_OBJECTS;
 
-public class Sphere : Object {
+public class Sphere : IObject {
     /// <summary>
     /// Sphere object
     /// </summary>
@@ -11,18 +11,25 @@ public class Sphere : Object {
     /// <param name="radius"> Sphere radius </param>
     /// <param name="material"> Material </param>
     /// <param name="name"> Sphere name </param>
-    public Sphere(Vector3 position, Vector3 radius, Material material = null!, string name = "sphere1") : base(position, radius, material, name) {
-        Position = position;
-        Size     = radius;
-        Name     = name;
-        Material = material == null! ? Material.DefaultMaterial : material;
+    public Sphere(Vector3 position, double radius, Material material = null!, string name = "sphere1") {
+        Position     = position;
+        Radius       = radius;
+        Name         = name;
+        Material     = material == null! ? Material.DefaultMaterial : material;
     }
+    
+    private string Name { get; set; }
+    private double Radius { get; set; }
+    private Vector3 Position { get; set; }
+    private Material Material { get; set; }
 
-    public override Vector2 Intersection(Vector3 rayOrigin, Vector3 rayDirection, out Vector3 intersectionNormal) {
+    public string GetName() => Name;
+    
+    public Vector2 Intersection(Vector3 rayOrigin, Vector3 rayDirection, out Vector3 intersectionNormal) {
         rayOrigin -= Position;
         
         var b = rayOrigin.Dot(rayDirection);
-        var c = rayOrigin.Dot(rayOrigin) - Size.X * Size.X;
+        var c = rayOrigin.Dot(rayOrigin) - Radius * Radius;
         var h = b * b - c;
         if (h < .0d) {
             intersectionNormal = new Vector3(0);
@@ -35,4 +42,10 @@ public class Sphere : Object {
         
         return intersection;
     }
+    
+    public Vector3 GetPosition() => Position;
+    
+    public void SetPosition(Vector3 position) => Position = position;
+    
+    public Material GetMaterial() => Material;
 }
