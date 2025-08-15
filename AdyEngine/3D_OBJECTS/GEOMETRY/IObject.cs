@@ -1,6 +1,7 @@
-﻿using AdyEngine.OBJECTS;
+﻿using AdyEngine._3D_OBJECTS.MATERIALS;
+using AdyEngine.OBJECTS;
 
-namespace AdyEngine._3D_OBJECTS;
+namespace AdyEngine._3D_OBJECTS.GEOMETRY;
 
 public interface IObject {
     /// <summary>
@@ -29,4 +30,10 @@ public interface IObject {
     /// </summary>
     /// <param name="position"> New position </param>
     public void SetPosition(Vector3 position);
+
+    /// <summary>
+    /// Gets material
+    /// </summary>
+    /// <returns> Material of object </returns>
+    public Material GetMaterial();
 }

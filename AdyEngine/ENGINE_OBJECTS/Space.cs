@@ -1,4 +1,5 @@
 ﻿using AdyEngine._3D_OBJECTS;
+using AdyEngine._3D_OBJECTS.GEOMETRY;
 
 namespace AdyEngine.ENGINE_OBJECTS;
 
