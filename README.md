@@ -10,19 +10,25 @@ Simple library for implementing 3D graphics anywhere
           });
 
 -----------------------------------
-## Lighting 
-![Alt Text](./Seven.gif)
+<h1 align="center"> Lightning </h1>
+<p align="center">
+  <img width="800" height="480" src="./Seven.gif">
+</p>
 
 -----------------------------------
-## Example of geometry in moving
-![Alt Text](./Second.gif)
+<h1 align="center"> Example of geometry in moving </h1>
+<p align="center">
+  <img width="800" height="480" src="./Second.gif">
+</p>
 
 -----------------------------------
-## 3D planing on scene
-![Alt Text](./Fourth.gif)
+<h1 align="center"> 3D planing on scene </h1>
+<p align="center">
+  <img width="800" height="480" src="./Fourth.gif">
+</p>
 
 -----------------------------------
-## Color functionality
+<h1 align="center"> Color functionality </h1>
 Every object ob scene have **MATERIAL** parametr with next constructors:
 
     public Material(string gradient) {
@@ -40,12 +46,14 @@ Every object ob scene have **MATERIAL** parametr with next constructors:
         ConsoleColor = color;
     }
 
-![Alt Text](./Third.gif)
+<p align="center">
+  <img width="800" height="480" src="./Third.gif">
+</p>
 
 Don`t foget to use **COLOR CAMERA** instead **CHROME CAMERA**
 
 -----------------------------------
-## Collisions, spawning and deleting
+<h1 align="center"> Collisions, spawning and deleting </h1>
 U also can **SPAWN**, **DELETE** and check **COLLISIONS** of objects in space. For example next code:
 
     public static void Main() {
@@ -76,10 +84,12 @@ U also can **SPAWN**, **DELETE** and check **COLLISIONS** of objects in space. F
 
 Will return next scene:
 
-![Alt Text](./Fives.gif)
+<p align="center">
+  <img width="800" height="480" src="./Fives.gif">
+</p>
 
 -----------------------------------
-## Collections
+<h1 align="center"> Collections </h1>
 U can unite objects into collections and work with them. First for this u should create collection and add some objects:
 
       var space = new Space(new ChromeCamera(new Vector3(-4,0,0), new Vector3(0)), 
@@ -103,10 +113,12 @@ And next code will return next scene:
       }
 
 
-![Alt Text](./Six.gif)
+<p align="center">
+  <img width="800" height="480" src="./Six.gif">
+</p>
 
 -----------------------------------
-## Lines
+<h1 align="center"> Lines </h1>
 But if u dont want to use preset objects like **SPHERE** or **CUBE** with **PLANE**, u can create ur own object with **LINES** united into **COLLECTION**. Next code will return next scene:
 
       public static void Main() {
@@ -138,6 +150,8 @@ But if u dont want to use preset objects like **SPHERE** or **CUBE** with **PLAN
               }
       }
 
-![Alt Text](./Eight.gif)
+<p align="center">
+  <img width="800" height="480" src="./Eight.gif">
+</p>
 
 -----------------------------------
