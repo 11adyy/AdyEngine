@@ -1,4 +1,5 @@
-﻿using AdyEngine._3D_OBJECTS.MATERIALS;
+﻿using System.Collections.Generic;
+using AdyEngine._3D_OBJECTS.MATERIALS;
 using AdyEngine.OBJECTS;
 
 namespace AdyEngine._3D_OBJECTS.GEOMETRY.GEOMETRY_OBJECTS;
@@ -32,7 +33,7 @@ public class Collection : Object {
             vector += obj.Intersection(rayOrigin + Position, rayDirection, out var currentNormal);
             normal += currentNormal;
         }
-
+        
         intersectionNormal = normal;
         return vector;
     }

@@ -1,5 +1,4 @@
-﻿using AdyEngine._3D_OBJECTS.GEOMETRY;
-using AdyEngine._3D_OBJECTS.GEOMETRY.GEOMETRY_OBJECTS;
+﻿using AdyEngine._3D_OBJECTS.GEOMETRY.GEOMETRY_OBJECTS;
 using AdyEngine.ENGINE_OBJECTS.CAMERA;
 using AdyEngine.OBJECTS;
 using Object = AdyEngine._3D_OBJECTS.GEOMETRY.Object;

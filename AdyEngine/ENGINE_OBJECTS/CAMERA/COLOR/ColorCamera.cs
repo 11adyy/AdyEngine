@@ -1,4 +1,5 @@
-﻿using AdyEngine.OBJECTS;
+﻿using System;
+using AdyEngine.OBJECTS;
 
 namespace AdyEngine.ENGINE_OBJECTS.CAMERA.COLOR;
 
@@ -12,8 +13,7 @@ public class ColorCamera : Camera {
             Console.ResetColor();
         
         for (var i = 0; i < buffer.Length; i++) {
-            if (buffer[i] != ' ')
-                Console.ForegroundColor = colorBuffer[i];
+            if (buffer[i] != ' ') Console.ForegroundColor = colorBuffer[i];
             
             Console.Write(buffer[i]);
         }

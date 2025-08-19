@@ -1,4 +1,6 @@
-﻿namespace AdyEngine._3D_OBJECTS.MATERIALS;
+﻿using System;
+
+namespace AdyEngine._3D_OBJECTS.MATERIALS;
 
 public class Material {
     /// <summary>
