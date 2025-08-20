@@ -1,11 +1,12 @@
-﻿using AdyEngine.OBJECTS;
+﻿using System;
+using AdyEngine.OBJECTS;
 
 namespace AdyEngine.ENGINE_OBJECTS.CAMERA.COLOR;
 
 public class ColorCamera : Camera {
     public ColorCamera(Vector3 coordinates, Vector3 angles) : base(coordinates, angles) { }
 
-    public ColorCamera(Vector3 coordinates, Vector3 angles, double viewDistance = 20, int cameraX = 120, int cameraY = 30) : base(coordinates, angles, viewDistance, cameraX, cameraY) { }
+    public ColorCamera(Vector3 coordinates, Vector3 angles, int cameraX, int cameraY) : base(coordinates, angles, cameraX, cameraY) { }
 
     protected override void GetConsoleView(char[] buffer, ConsoleColor[] colorBuffer) {
         if (Console.ForegroundColor != ConsoleColor.Black)
