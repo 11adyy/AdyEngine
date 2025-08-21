@@ -1,5 +1,4 @@
-﻿using System;
-using AdyEngine._3D_OBJECTS.MATERIALS;
+﻿using AdyEngine._3D_OBJECTS.MATERIALS;
 using AdyEngine.OBJECTS;
 
 namespace AdyEngine._3D_OBJECTS.GEOMETRY.GEOMETRY_OBJECTS;
@@ -47,5 +46,10 @@ public class Cube : Object {
 
         intersectionNormal = -rayDirection.Sign() * yzxOrder.Step(tNear) * zxyOrder.Step(tNear);
         return new Vector2(tNearMax, tFarMin);
+    }
+
+    public override void Rotate(Vector3 angle) {
+        Position.Rotate(angle);
+        Size.Rotate(angle);
     }
 }

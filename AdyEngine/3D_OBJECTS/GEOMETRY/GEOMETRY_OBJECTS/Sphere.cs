@@ -1,5 +1,4 @@
-﻿using System;
-using AdyEngine._3D_OBJECTS.MATERIALS;
+﻿using AdyEngine._3D_OBJECTS.MATERIALS;
 using AdyEngine.OBJECTS;
 
 namespace AdyEngine._3D_OBJECTS.GEOMETRY.GEOMETRY_OBJECTS;
@@ -36,4 +35,6 @@ public class Sphere : Object {
         
         return intersection;
     }
+    
+    public override void Rotate(Vector3 angle) { }
 }
