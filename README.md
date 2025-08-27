@@ -1,6 +1,8 @@
 # Ady Engine
 Simple library for implementing 3D graphics anywhere
 
+A companion editor provides a graphical interface for creating and previewing scenes.
+
 # Simple creation of objects
       var space = new Space(new ChromeCamera(new Vector3(-4,0,0), new Vector3(0)), 
           new List<Object> {

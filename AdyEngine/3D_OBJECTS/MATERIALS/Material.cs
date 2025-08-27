@@ -20,33 +20,19 @@ public class Material {
         Gradient     = " .:!/r(l1Z4H9W8$@";
         ConsoleColor = color;
     }
-
-    /// <summary>
-    /// Material of Object
-    /// </summary>
-    /// <param name="color"> Color of material </param>
-    /// <param name="reflected"> Reflection status </param>
-    public Material(ConsoleColor color, bool reflected) {
-        Gradient     = " .:!/r(l1Z4H9W8$@";
-        ConsoleColor = color;
-        Reflected    = reflected;
-    }
     
     /// <summary>
     /// Material of Object
     /// </summary>
     /// <param name="gradient"> Gradient of material </param>
     /// <param name="color"> Color of material </param>
-    /// <param name="reflected"> Reflection status </param>
-    public Material(string gradient, ConsoleColor color, bool reflected) {
+    public Material(string gradient, ConsoleColor color) {
         Gradient     = gradient;
         ConsoleColor = color;
-        Reflected    = reflected;
     }
     
     private string Gradient { get; }
     private ConsoleColor ConsoleColor { get; }
-    private bool Reflected { get; } 
     
     /// <summary>
     /// Get material gradient
@@ -61,13 +47,7 @@ public class Material {
     public ConsoleColor GetGColor() => ConsoleColor;
 
     /// <summary>
-    /// Get reflection status
-    /// </summary>
-    /// <returns> Reflection status </returns>
-    public bool GetReflection() => Reflected;
-
-    /// <summary>
     /// Default material
     /// </summary>
-    public static Material DefaultMaterial => new (" .:!/r(l1Z4H9W8$@", ConsoleColor.White, false);
+    public static Material DefaultMaterial => new (" .:!/r(l1Z4H9W8$@", ConsoleColor.White);
 }
