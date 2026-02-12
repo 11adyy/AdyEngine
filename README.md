@@ -1,242 +1,79 @@
-# Ady Engine
-Simple library for implementing 3D graphics anywhere
+# AdyEngine
 
-A companion editor provides a graphical interface for creating and previewing scenes.
+AdyEngine is a C# 3D graphics library for rendering scenes in a terminal. It provides cameras, materials, geometric primitives, collections, object movement, and collision checks.
 
-# Simple creation of objects
-      var space = new Space(new ChromeCamera(new Vector3(-4,0,0), new Vector3(0)), 
-          new List<Object> {
-              new Sphere(new Vector3(0, 3, 0), new Vector3(1), Material.DefaultMaterial, "sphere_1"),
-              new Sphere(new Vector3(0, -3, 0), new Vector3(1), Material.DefaultMaterial, "sphere_2"),
-              new Light(new Vector3(-1, 0, -1), 1, "light1_1")
-          });
+## Features
 
------------------------------------
-<h1 align="center"> Lightning </h1>
-<p align="center">
-  <img width="800" height="480" src="./Seven.gif">
-</p>
+- Chrome and color cameras
+- Spheres, cubes, planes, lines, polygons, lights, and collections
+- Scene objects that can be created, moved, and removed at runtime
+- Collision queries between scene objects
+- Console rendering with configurable material gradients and colors
 
------------------------------------
-<h1 align="center"> Example of geometry in moving </h1>
-<p align="center">
-  <img width="800" height="480" src="./Second.gif">
-</p>
+## Requirements
 
------------------------------------
-<h1 align="center"> 3D planing on scene </h1>
-<p align="center">
-  <img width="800" height="480" src="./Fourth.gif">
-</p>
+- .NET 7 SDK
 
------------------------------------
-<h1 align="center"> Color functionality </h1>
+## Build
 
-Every object ob scene have **MATERIAL** parametr with next constructors:
+```sh
+dotnet build AdyEngine.sln
+```
 
-    public Material(string gradient) {
-        Gradient = gradient;
-        ConsoleColor = ConsoleColor.White;
-    }
+## Quick start
 
-    public Material(ConsoleColor color) {
-        Gradient     = " .:!/r(l1Z4H9W8$@";
-        ConsoleColor = color;
-    }
+Create a `Space` with a camera and a set of objects, then render it with `GetView`:
 
-    public Material(string gradient, ConsoleColor color) {
-        Gradient     = gradient;
-        ConsoleColor = color;
-    }
+```csharp
+using AdyEngine.ENGINE_OBJECTS;
+using AdyEngine.ENGINE_OBJECTS.CAMERA.CHROME_CAMERA;
+using AdyEngine.OBJECTS;
+using AdyEngine._3D_OBJECTS.GEOMETRY.GEOMETRY_OBJECTS;
+using AdyEngine._3D_OBJECTS.MATERIALS;
+using Object = AdyEngine._3D_OBJECTS.GEOMETRY.Object;
 
-<p align="center">
-  <img width="800" height="480" src="./Third.gif">
-</p>
+var scene = new Space(
+    new ChromeCamera(new Vector3(-4, 0, 0), new Vector3(0)),
+    new List<Object>
+    {
+        new Sphere(new Vector3(0, 0, 0), new Vector3(1), Material.DefaultMaterial, "sphere"),
+    });
 
-Don`t foget to use **COLOR CAMERA** instead **CHROME CAMERA**
+scene.GetView();
+```
 
------------------------------------
-<h1 align="center"> Collisions, spawning and deleting </h1>
+Use `ColorCamera` when rendering colored materials. `Space` also exposes methods for retrieving, moving, creating, and deleting objects. Geometry can be assembled into `Collection` instances, and object collision queries can be used to react to intersections.
 
-U also can **SPAWN**, **DELETE** and check **COLLISIONS** of objects in space. For example next code:
+## Examples
 
-    public static void Main() {
-        Console.CursorVisible = false;
-    
-        var space = new Space(new ChromeCamera(new Vector3(-4,0,0), new Vector3(0)), 
-            new List<Object> {
-                new Sphere(new Vector3(0, 3, 0), new Vector3(1), Material.DefaultMaterial, "sphere_1"),
-                new Sphere(new Vector3(0, -3, 0), new Vector3(1), Material.DefaultMaterial, "sphere_2"),
-                new Light(new Vector3(-1, 0, -1), 1, "light1_1")
-            });
-    
-        var t = 0;
-        while (true) {
-            t++;
-            space.GetView();
-            space.GetObject("new_sphere").SetPosition(new Vector3(Math.Sin(t * .01), 0, Math.Cos(t * .01)));
-            
-            
-            space.GetObject("sphere_2").Move(new Vector3(0,.0010,0));
-            if (space.GetObject("sphere_1").CollisionObjects(space.Objects).Count > 0)
-            {
-                space.DeleteObject("sphere_1");
-                space.CreateObject(new Sphere(new Vector3(0), new Vector3(1), Material.DefaultMaterial, "new_sphere"));
-            }
-        }
-    }
+The animated GIFs in this repository show lighting, movement, color rendering, collisions, collections, lines, and polygons. The source project is in [`AdyEngine`](AdyEngine/) and the solution is [`AdyEngine.sln`](AdyEngine.sln).
 
-Will return next scene:
+## Demos
 
-<p align="center">
-  <img width="800" height="480" src="./Fives.gif">
-</p>
+Each animation below is stored in this repository and illustrates a rendered scene.
 
------------------------------------
-<h1 align="center"> Collections </h1>
+### Scene setup and geometry
 
-U can unite objects into collections and work with them. First for this u should create collection and add some objects:
+![Initial scene](./First.gif)
 
-      var space = new Space(new ChromeCamera(new Vector3(-4,0,0), new Vector3(0)), 
-            new List<Object> {
-                new Collection(new Vector3(0), new Vector3(0), new List<Object> {
-                    new Sphere(new Vector3(0, 2, 0), new Vector3(1), Material.DefaultMaterial, "sphere_1"),   
-                    new Sphere(new Vector3(0, -2, 0), new Vector3(1), Material.DefaultMaterial, "sphere_2"),   
-                }),
-                new Light(new Vector3(-1, 0, -1), 1, "light_1")
-      });
+![Sphere and cube rendering](./Second.gif)
 
-And next code will return next scene:
+![Scene planning](./Fourth.gif)
 
-      var t = 0;
-      while (true) {
-            t++;
-            space.GetView();
+### Materials, lighting, and motion
 
-            space.GetObject("light_1").SetPosition(new Vector3(Math.Cos(t * .01), Math.Sin(t * .01),-1));
-            space.GetObject("collection1").SetPosition(new Vector3(0, 0,Math.Sin(t * .01)));
-      }
+![Color rendering](./Third.gif)
 
+![Lighting](./Seven.gif)
 
-<p align="center">
-  <img width="800" height="480" src="./Six.gif">
-</p>
+![Object collisions](./Fives.gif)
 
------------------------------------
-<h1 align="center"> Lines </h1>
+![Collections](./Six.gif)
 
-But if u dont want to use preset objects like **SPHERE** or **CUBE** with **PLANE**, u can create ur own object with **LINES** united into **COLLECTION**. Next code will return next scene:
+### Custom geometry
 
-      public static void Main() {
-              Console.CursorVisible = false;
-      
-              var space = new Space(new ChromeCamera(new Vector3(-4,0,0), new Vector3(0)), 
-                  new List<Object> {
-                      new Collection(new Vector3(0), new Vector3(1), new List<Object> {
-                          new Line(new Vector3(-1.8, -1, 1), new Vector3(-1.8, 1, 1)),
-                          new Line(new Vector3(-1.8, -1, 0), new Vector3(-1.8, 1, 0)),
-                      
-                          new Line(new Vector3(-1.8, -1, 0), new Vector3(-1.8, -1, -1)),
-                          new Line(new Vector3(-1.8, -3, 0), new Vector3(-1.8, -3, -1)),
-                      
-                          new Line(new Vector3(0, -1, 1), new Vector3(0, 1, 1)),
-                          new Line(new Vector3(0, -1, 0), new Vector3(0, 1, 0)),
-                      
-                          new Line(new Vector3(0, -1, 0), new Vector3(0, -1, -1)),
-                          new Line(new Vector3(0, -3, 0), new Vector3(0, -3, -1)),
-                      })
-                  });
-      
-              var t = 0;
-              while (true) {
-                  t++;
-                  space.GetView();
-                  
-                  space.GetObject("collection1").SetPosition(new Vector3(Math.Cos(t * .01), -Math.Cos(t * .01), Math.Sin(t * .01)));
-              }
-      }
+![Line geometry](./Eight.gif)
 
-<p align="center">
-  <img width="800" height="480" src="./Eight.gif">
-</p>
+![Polygon geometry](./Nine.gif)
 
-      public static void Main() {
-              Console.CursorVisible = false;
-      
-              var space = new Space(new ChromeCamera(new Vector3(-4,0,0), new Vector3(0)), 
-                  new List<Object> {
-                      new Collection(new Vector3(0, 0, 0), new Vector3(1), new List<Object> {
-                          new Line(new Vector3(0,0,1), new Vector3(1,1,0)),
-                          new Line(new Vector3(0,0,1), new Vector3(1,-1,0)),
-                          new Line(new Vector3(0,0,1), new Vector3(-1,1,0)),
-                          new Line(new Vector3(0,0,1), new Vector3(-1,-1,0)),
-                          
-                          new Line(new Vector3(1,1,2),  new Vector3(1,3,2)),
-                          new Line(new Vector3(1,1,2),  new Vector3(3,1,2)),
-                          new Line(new Vector3(-1,1,2),  new Vector3(-1,3,2)),
-                          new Line(new Vector3(1,-1,2), new Vector3(3,-1,2)),
-                      }),
-                  });
-      
-              var t = 0;
-              while (true) {
-                  t++;
-                  space.GetView();
-                  
-                  space.GetObject("collection1").SetPosition(new Vector3(Math.Cos(t * .01), -Math.Cos(t * .01), Math.Sin(t * .01) + 1));
-              }
-          }
-
-<p align="center">
-  <img width="800" height="480" src="./Nine.gif">
-</p>
-
------------------------------------
-<h1 align="center"> Polygons </h1>
-
-U also can manualy work with **POLYGONS**. For example next code:
-
-         public static void Main() {
-              Console.CursorVisible = false;
-      
-              var space = new Space(new ChromeCamera(new Vector3(-4,0,0), new Vector3(0), 20), 
-                  new List<Object> {
-                      new Collection(new Vector3(0), new Vector3(0), new List<Object> {
-                          new Polygon(new [] {
-                              new Vector3(0,-1,-1),
-                              new Vector3(0,1,-1),
-                              new Vector3(0,1,1),
-                          }),
-                          new Polygon(new [] {
-                              new Vector3(0,-1,-1),
-                              new Vector3(0,-1,1),
-                              new Vector3(0,1,1),
-                          }),
-                          
-                          new Polygon(new [] {
-                              new Vector3(1,-1,-1),
-                              new Vector3(0,-1,-1),
-                              new Vector3(1,-1,1),
-                          }),
-                          new Polygon(new [] {
-                              new Vector3(0,-1,-1),
-                              new Vector3(0,-1,1),
-                              new Vector3(6,-1,1),
-                          }),
-                      })
-                  });
-      
-              var t = 0;
-              while (true) {
-                  t++;
-                  space.GetView();
-                  
-                  space.GetObject("collection1").Rotate(new Vector3(0, .01, .01));
-              }
-          }
-
-Will return next scene:
-
-<p align="center">
-  <img width="800" height="480" src="./Ten.gif">
-</p>
+![Additional rendering example](./Ten.gif)
